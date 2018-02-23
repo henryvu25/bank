@@ -1,0 +1,30 @@
+<a href="/logout"><button>Logout</button></a>
+
+
+<h1>Welcome, @ViewBag.user.first!</h1>
+
+Current Balance: $@ViewBag.user.balance.ToString("0.00")
+
+<form action="/transaction" method="post">
+    <p>Deposit/Withdraw: <input type="number" name="amount" step="0.01"></p>
+    <input type="hidden" name="id" value="@ViewBag.user.userid">
+    <button type="submit">Submit</button>
+</form>
+
+@ViewBag.exceed
+
+<table>
+    <tr>
+        <th>Amount</th>
+        <th>Date</th>
+    </tr>
+    @{
+        foreach(var t in ViewBag.trans)
+        {
+            <tr>
+                <td>$@t.amount.ToString("0.00")</td>
+                <td>@t.date.ToString("MMM dd yyyy")</td>
+            </tr>
+        }
+    }
+</table>

@@ -1,0 +1,23 @@
+<h1>Register</h1>
+
+<form action="process" method="post">
+    <p>First Name: <input type="text" name="first"></p>
+    <p>Last Name: <input type="text" name="last"></p>
+    <p>Email: <input type="text" name="email"></p>
+    <p>Password: <input type="password" name="password"></p>
+    <p>Confirm Password: <input type="password" name="confirm"></p>
+    <button type="submit">Submit</button>
+</form>
+<p>@ViewBag.exists</p>
+@{
+    foreach(var error in ViewBag.errors)
+    {
+        if(@error.Errors.Count > 0)
+            {
+                <p>@error.Errors[0].ErrorMessage</p>
+            }
+    }
+}
+
+
+<a href="login">Already Registered?</a>
